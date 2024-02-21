@@ -16,16 +16,16 @@ void main() {
 
 //Second Logic
 List<T> rotateList<T>(List<T> list, int rotateBy) {
-  rotateBy = rotateBy % list.length; 
+  rotateBy = rotateBy % list.length;
   if (rotateBy < 0) {
-    rotateBy += list.length;
+    rotateBy = list.length + rotateBy;
   }
-  
+
   List<T> rotatedList = List.from(list);
   for (int i = 0; i < rotateBy; i++) {
-    rotatedList.insert(0, rotatedList.removeAt(rotatedList.length - 1));
+    rotatedList.add(rotatedList.removeAt(0));
   }
-  
+
   return rotatedList;
 }
 
