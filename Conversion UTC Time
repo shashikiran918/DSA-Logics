@@ -1,0 +1,20 @@
+import 'package:intl/intl.dart';
+
+void main() {
+  // Define the UTC time
+  var utcTime = DateTime.parse("2024-01-02T18:30:00.000+00:00");
+
+  // Calculate the offset for IST (+5:30)
+  var istOffset = Duration(hours: 5, minutes: 30);
+
+  // Convert the UTC time to IST
+  var istTime = utcTime.add(istOffset);
+
+  // Get only the date part
+  var istDate = DateTime(istTime.year, istTime.month, istTime.day);
+
+  // Format the date to display in "yyyy-MM-dd" format
+  var formattedDate = DateFormat("yyyy-MM-dd").format(istDate);
+
+  print("IST Date: $formattedDate");//IST Date: 2024-01-03
+}
