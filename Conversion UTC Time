@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 
 void main() {
-
   var utcTime = DateTime.parse("2024-01-02T18:30:00.000+00:00");
 
   // Calculate the offset for IST (+5:30)
@@ -9,10 +8,7 @@ void main() {
 
   var istTime = utcTime.add(istOffset);
 
-  var istDate = DateTime(istTime.year, istTime.month, istTime.day);
-
-
-  var formattedDate = DateFormat("yyyy-MM-dd").format(istDate);
+  var formattedDate = DateFormat("yyyy-MM-dd").format(istTime);
 
   print("IST Date: $formattedDate"); //IST Date: 2024-01-03
 }
