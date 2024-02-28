@@ -1,0 +1,36 @@
+import 'package:intl/intl.dart';
+
+String convertDateFormat(String inputDate) {
+  DateFormat inputFormat = DateFormat('dd-MM-yy_hh-mm-ss-a');
+  DateFormat outputFormat = DateFormat('hh:mm a');
+  DateFormat pastDateFormat = DateFormat('dd MMM yy hh:mm a');
+
+  DateTime dateTime = inputFormat.parse(inputDate);
+  DateTime now = DateTime.now();
+
+  Duration difference = now.difference(dateTime);
+
+  if (dateTime.isAfter(now)) {
+    return 'Future date';
+  } else if (difference.inMinutes < 1) {
+    return 'Few seconds ago';
+  } else if (difference.inMinutes < 3) {
+    return 'Few minutes ago';
+  } else if (difference.inMinutes == 5) {
+    return '5 mins ago';
+  } else if (dateTime.year == now.year &&
+      dateTime.month == now.month &&
+      dateTime.day == now.day) {
+    return 'Today ${outputFormat.format(dateTime)}';
+  } else if (dateTime.year == now.year &&
+      dateTime.month == now.month &&
+      dateTime.day == now.day - 1) {
+    return 'Yesterday ${outputFormat.format(dateTime)}';
+  } else {
+    return pastDateFormat.format(dateTime);
+  }
+}
+
+void main() {
+  print(convertDateFormat('28-02-24_12-53-00-PM'));
+}
